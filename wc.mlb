@@ -1,0 +1,9 @@
+local
+  $(SML_LIB)/basis/basis.mlb
+  $(SML_LIB)/cml/cml.mlb
+in
+  src/main.sig
+  src/main.sml
+
+  src/call-main.sml
+end
