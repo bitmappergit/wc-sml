@@ -27,10 +27,10 @@ structure Main : MAIN = struct
     val c1 : int chan = channel()
     val c2 : int chan = channel()
     val c3 : int chan = channel()
-    fun contents () = TextIO.inputAll (TextIO.openIn file)
-    val _ = spawn (fn () => send (c1, countLines (contents())))
-    val _ = spawn (fn () => send (c2, countWords (contents())))
-    val _ = spawn (fn () => send (c3, countChars (contents())))
+    val contents = TextIO.inputAll (TextIO.openIn file)
+    val _ = spawn (fn () => send (c1, countLines contents))
+    val _ = spawn (fn () => send (c2, countWords contents))
+    val _ = spawn (fn () => send (c3, countChars contents))
   in
     print (Int.toString (recv c1)); print " ";
     print (Int.toString (recv c2)); print " ";
